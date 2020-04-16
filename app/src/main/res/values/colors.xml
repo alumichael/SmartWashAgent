@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#00c363</color>
+    <color name="colorPrimaryDark">#025d30</color>
+    <color name="colorAccent">#000</color>
+
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorGrey">#E9E6E6</color>
+    <color name="colorDarkerGrey">#646464</color>
+
+    <color name="colorBlack">#000000</color>
+
+
+
+
+<!--    walkthrough dots-->
+
+    <color name="dot_dark_screen1">#777776</color>
+    <color name="dot_dark_screen2">#777776</color>
+    <color name="dot_dark_screen3">#777776</color>
+    <color name="dot_light_screen1">#025d30</color>
+    <color name="dot_light_screen2">#025d30</color>
+    <color name="dot_light_screen3">#025d30</color>
+
+
+
+</resources>

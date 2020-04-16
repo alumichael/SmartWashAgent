@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/manage_service_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:fitsSystemWindows="true"
+        app:popupTheme="@style/MyPopupTheme"
+        android:theme="@style/MyToolBarTheme"
+        app:titleTextColor="@color/colorAccent"
+        app:titleTextAppearance="@style/Toolbar.TitleText"
+        app:title="@string/app_name">
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+
+    >
+
+    <LinearLayout
+        android:id="@+id/input_l"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="Add Service"
+        android:layout_margin="1dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="@font/nunito_semibold"/>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutCustomerName"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <EditText
+            android:id="@+id/customer_name_editxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_two"
+            android:background="@drawable/spinner_bg"
+            android:hint="Service Name e.g Executive Wash"
+            android:importantForAutofill="noExcludeDescendants"
+            android:inputType="text"
+            android:textSize="14sp"
+            android:padding="@dimen/size_ten"
+            tools:targetApi="o"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutPrice"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <EditText
+            android:id="@+id/price_editxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_two"
+            android:background="@drawable/spinner_bg"
+            android:hint="Price per cloth e.g 50"
+            android:importantForAutofill="noExcludeDescendants"
+            android:inputType="text"
+            android:textSize="14sp"
+            android:padding="@dimen/size_ten"
+            tools:targetApi="o"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- <Spinner
+         android:id="@+id/service_type"
+         android:layout_width="match_parent"
+         android:layout_height="50dp"
+         android:layout_marginTop="@dimen/size_three"
+         android:visibility="gone"
+         android:background="@drawable/spinner_bg"
+         android:clickable="false"
+
+         />-->
+
+    <Button
+        android:id="@+id/add_button"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:background="@drawable/profile_header"
+        android:padding="@dimen/size_four"
+        android:text="Add"
+        android:textSize="12sp"
+        android:layout_gravity="end"
+        android:layout_marginTop="@dimen/size_ten"
+        android:textColor="@color/colorWhite"
+        android:layout_marginBottom="@dimen/size_ten"
+
+        />
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:visibility="gone"
+        android:clickable="false"
+        android:layout_gravity="end"
+        app:indicatorColor="@color/colorAccent"
+        app:indicatorName="BallPulseIndicator"
+        tools:ignore="RtlHardcoded"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/not_found_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            android:src="@drawable/img_empty" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="No service found"
+            android:textAlignment="center"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_customers"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="LinearLayoutManager" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+</LinearLayout>
+
+
+</LinearLayout>

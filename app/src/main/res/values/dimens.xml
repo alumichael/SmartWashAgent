@@ -1,0 +1,123 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+    <dimen name="dots_height">25.0dip</dimen>
+    <dimen name="dots_margin_bottom">20.0dip</dimen>
+
+
+    <!-- Numbers dimens-->
+    <dimen name="size_zero">0dp</dimen>
+    <dimen name="size_one">1dp</dimen>
+    <dimen name="size_two">2dp</dimen>
+    <dimen name="size_three">3dp</dimen>
+    <dimen name="size_four">4dp</dimen>
+    <dimen name="size_five">5dp</dimen>
+    <dimen name="size_six">6dp</dimen>
+    <dimen name="size_seven">7dp</dimen>
+    <dimen name="size_eight">8dp</dimen>
+    <dimen name="size_nine">9dp</dimen>
+    <dimen name="size_ten">10dp</dimen>
+    <dimen name="size_eleven">11dp</dimen>
+    <dimen name="size_twelve">12dp</dimen>
+    <dimen name="size_thirteen">13dp</dimen>
+    <dimen name="size_fourteen">14dp</dimen>
+    <dimen name="size_fifteen">15dp</dimen>
+    <dimen name="size_sixteen">16dp</dimen>
+    <dimen name="size_seventeen">17dp</dimen>
+    <dimen name="size_eighteen">18dp</dimen>
+    <dimen name="size_nineteen">19dp</dimen>
+    <dimen name="size_twenty">20dp</dimen>
+    <dimen name="size_twenty_one">21dp</dimen>
+    <dimen name="size_twenty_two">22dp</dimen>
+    <dimen name="size_twenty_three">23dp</dimen>
+    <dimen name="size_twenty_four">24dp</dimen>
+    <dimen name="size_twenty_five">25dp</dimen>
+    <dimen name="size_twenty_six">26dp</dimen>
+    <dimen name="size_twenty_seven">27dp</dimen>
+    <dimen name="size_twenty_eight">28dp</dimen>
+    <dimen name="size_twenty_nine">29dp</dimen>
+    <dimen name="size_thirty">30dp</dimen>
+    <dimen name="size_thirty_one">31dp</dimen>
+    <dimen name="size_thirty_two">32dp</dimen>
+    <dimen name="size_thirty_three">33dp</dimen>
+    <dimen name="size_thirty_four">34dp</dimen>
+    <dimen name="size_thirty_five">35dp</dimen>
+    <dimen name="size_thirty_six">36dp</dimen>
+    <dimen name="size_thirty_seven">37dp</dimen>
+    <dimen name="size_thirty_eight">38dp</dimen>
+    <dimen name="size_thirty_nine">39dp</dimen>
+    <dimen name="size_forty">40dp</dimen>
+    <dimen name="size_forty_one">41dp</dimen>
+    <dimen name="size_forty_two">42dp</dimen>
+    <dimen name="size_forty_three">43dp</dimen>
+    <dimen name="size_forty_four">44dp</dimen>
+    <dimen name="size_forty_five">45dp</dimen>
+    <dimen name="size_forty_six">46dp</dimen>
+    <dimen name="size_forty_seven">47dp</dimen>
+    <dimen name="size_forty_eight">48dp</dimen>
+    <dimen name="size_forty_nine">49dp</dimen>
+    <dimen name="size_fifty">50dp</dimen>
+    <dimen name="size_fifty_one">51dp</dimen>
+    <dimen name="size_fifty_two">52dp</dimen>
+    <dimen name="size_fifty_three">53dp</dimen>
+    <dimen name="size_fifty_four">54dp</dimen>
+    <dimen name="size_fifty_five">55dp</dimen>
+    <dimen name="size_fifty_six">56dp</dimen>
+    <dimen name="size_fifty_seven">57dp</dimen>
+    <dimen name="size_fifty_eight">58dp</dimen>
+    <dimen name="size_fifty_nine">59dp</dimen>
+    <dimen name="size_sixty">60dp</dimen>
+    <dimen name="size_sixty_one">61dp</dimen>
+    <dimen name="size_sixty_two">62dp</dimen>
+    <dimen name="size_sixty_three">63dp</dimen>
+    <dimen name="size_sixty_four">64dp</dimen>
+    <dimen name="size_sixty_five">65dp</dimen>
+    <dimen name="size_sixty_six">66dp</dimen>
+    <dimen name="size_sixty_seven">67dp</dimen>
+    <dimen name="size_sixty_eight">68dp</dimen>
+    <dimen name="size_sixty_nine">69dp</dimen>
+    <dimen name="size_seventy">70dp</dimen>
+    <dimen name="size_seventy_one">71dp</dimen>
+    <dimen name="size_seventy_two">72dp</dimen>
+    <dimen name="size_seventy_three">73dp</dimen>
+    <dimen name="size_seventy_four">74dp</dimen>
+    <dimen name="size_seventy_five">75dp</dimen>
+    <dimen name="size_seventy_six">76dp</dimen>
+    <dimen name="size_seventy_seven">77dp</dimen>
+    <dimen name="size_seventy_eight">78dp</dimen>
+    <dimen name="size_seventy_nine">79dp</dimen>
+    <dimen name="size_eighty">80dp</dimen>
+    <dimen name="size_eighty_one">81dp</dimen>
+    <dimen name="size_eighty_two">82dp</dimen>
+    <dimen name="size_eighty_three">83dp</dimen>
+    <dimen name="size_eighty_four">84dp</dimen>
+    <dimen name="size_eighty_five">85dp</dimen>
+    <dimen name="size_eighty_six">86dp</dimen>
+    <dimen name="size_eighty_seven">87dp</dimen>
+    <dimen name="size_eighty_eight">88dp</dimen>
+    <dimen name="size_eighty_nine">89dp</dimen>
+    <dimen name="size_ninety">90dp</dimen>
+    <dimen name="size_ninety_one">91dp</dimen>
+    <dimen name="size_ninety_two">92dp</dimen>
+    <dimen name="size_ninety_three">93dp</dimen>
+    <dimen name="size_ninety_four">94dp</dimen>
+    <dimen name="size_ninety_five">95dp</dimen>
+    <dimen name="size_ninety_six">96dp</dimen>
+    <dimen name="size_ninety_seven">97dp</dimen>
+    <dimen name="size_ninety_eight">98dp</dimen>
+    <dimen name="size_ninety_nine">99dp</dimen>
+    <dimen name="size_one_hundred">100dp</dimen>
+    <dimen name="mediumText">18sp</dimen>
+    <dimen name="smallText">15sp</dimen>
+    <dimen name="icon_width_height">40dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="nav_header_height">160.0dip</dimen>
+    <dimen name="nav_header_vertical_spacing">16.0dip</dimen>
+
+
+
+</resources>

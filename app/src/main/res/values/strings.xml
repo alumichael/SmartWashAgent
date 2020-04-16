@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">SmartWash</string>
+    <string name="title_home">Home</string>
+    <string name="title_location">Locations</string>
+    <string name="title_history">Transaction</string>
+    <string name="title_profile">Profile</string>
+
+    <string name="executive_dsc"> This service cost N200 per cloth.  Such cloth will be given extraordinary touch.  The cloth will be delivered in 24 hours and the order and delivery service would come alongside.</string>
+    <string name="express_dsc">  This service cost N200 per cloth and you can get the cloth in 8 hours.  It is set up for urgent laundry service. </string>
+    <string name="family_dsc">  This takes a maximum of fifty clothes at once.  This attracts a charge of N1000 for fifty clothes.  Either service exclude wedding gown, suit, Agbada.</string>
+    <string name="general_dsc">  This service cost N200 per cloth and you can get the cloth in 8 hours.  It is set up for urgent laundry service. </string>
+
+    <string name="soap_dsc">  You can get smartwash soap at the rate to be specified later. You can’t make the smartwash soap transaction alone, it has to be made alongside another transaction, so delivery cost won’t be charged. </string>
+    <string name="title_activity_maps">Map</string>
+    <string name="naira_currency">NGN</string>
+
+    <string-array name="status_array">
+        <item> All Order </item>
+        <item> Pending Order </item>
+        <item> Delivered Order </item>
+        <item> Received Order </item>
+
+    </string-array>
+</resources>

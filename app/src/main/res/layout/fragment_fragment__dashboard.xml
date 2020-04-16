@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/dash_layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.Fragment_Dashboard">
+
+    <ImageView
+        android:id="@+id/bg_curve"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/agent_dashboardbgsecond"
+        />
+
+
+
+    <ScrollView
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:scrollbars="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        >
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/fund_wallet_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="6dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="6dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="18dp"
+            >
+
+
+            <LinearLayout
+                android:id="@+id/linear_wallet_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/profile_header"
+                >
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Profile"
+                            android:layout_marginTop="4dp"
+                            android:textSize="17sp"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:textColor="@color/colorWhite"
+                            />
+
+                        <ImageView
+                            android:id="@+id/open_profile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/ic_open_in_new_black_24dp"
+
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="3dp"
+
+                        >
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/profile_photo"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/man"
+                            android:elevation="5dp"
+                            app:civ_border_color="@color/colorAccent"
+                            app:civ_border_width="3dp"
+                            android:clickable="false" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            >
+
+
+                            <TextView
+                                android:id="@+id/admin_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Michael Boluwaji"
+                                android:textSize="21sp"
+                                android:fontFamily="@font/nunito_semibold"
+                                android:textColor="@color/colorWhite"
+                                android:gravity="center_vertical"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="6dp"
+
+                                />
+
+                            <TextView
+                                android:id="@+id/role"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Super Admin"
+                                android:textSize="16sp"
+                                android:fontFamily="@font/nunito_semibold"
+                                android:textColor="@color/colorWhite"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="start"
+                                android:visibility="visible"
+                                android:layout_marginStart="6dp"
+                                />
+
+                            <TextView
+                                android:id="@+id/email_txt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="alumichael9@gmail.com"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/nunito_semibold"
+                                android:textColor="@color/colorBlack"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="start"
+                                android:visibility="visible"
+                                android:layout_marginStart="6dp"
+                                />
+
+                        </LinearLayout>
+
+
+                        <com.wang.avi.AVLoadingIndicatorView
+                            android:id="@+id/progressbar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/size_thirty_three"
+                            android:layout_gravity="end"
+                            android:layout_marginStart="10dp"
+                            android:visibility="gone"
+                            app:indicatorColor="@color/colorWhite"
+                            app:indicatorName="BallPulseIndicator"
+                            android:layout_marginLeft="10dp" />
+
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="12dp"
+            android:scrollbars="vertical"
+            android:elevation="10dp"
+            android:visibility="visible"
+            tools:listitem="@layout/dash_list" />
+
+
+    </LinearLayout>
+
+
+    </ScrollView>
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/avi1"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/size_forty_five"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:indicatorColor="@color/colorAccent"
+        app:indicatorName="BallSpinFadeLoaderIndicator" />
+
+
+
+    </FrameLayout>

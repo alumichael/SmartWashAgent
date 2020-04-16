@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layout_signIn"
+    >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/smartwash_agent_lognin_bg"
+        android:scaleType="centerCrop"
+        />
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/layout_inner"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_width="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/smartwashlogo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="SmartWash \n Agent"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#000"
+                android:textAlignment="center"
+                android:textSize="21sp" />
+
+
+
+
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp"
+        android:alpha="1.0"
+        android:padding="@dimen/size_four"
+        android:layout_marginTop="@dimen/size_fifteen"
+        android:layout_marginStart="@dimen/size_fifteen"
+        android:layout_marginEnd="@dimen/size_fifteen"
+        android:layout_marginBottom="@dimen/size_twelve"
+        android:layout_gravity="center"
+        >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="@dimen/size_four"
+            android:orientation="vertical">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_ten"
+                android:layout_marginLeft="@dimen/size_ten"
+                android:layout_marginRight="@dimen/size_ten"
+                >
+
+                <EditText
+                    android:id="@+id/email_editxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableEnd="@drawable/ic_email_black_24dp"
+                    android:hint="Email"
+                    android:drawableTint="@color/colorPrimary"
+                    android:inputType="textEmailAddress"
+                    android:fontFamily="@font/nunito_regular"
+                    android:drawableRight="@drawable/ic_email_black_24dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/size_ten"
+                android:layout_marginLeft="@dimen/size_ten"
+                android:layout_marginRight="@dimen/size_ten"
+                >
+
+                <EditText
+                    android:id="@+id/password_editxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableEnd="@drawable/ic_vpn_key_black_24dp"
+                    android:hint="Password (at least 6 characters)"
+                    android:fontFamily="@font/nunito_regular"
+                    android:drawableTint="@color/colorPrimary"
+                    android:inputType="textPassword"
+                    android:drawableRight="@drawable/ic_vpn_key_black_24dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/signin_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_fifteen"
+                android:elevation="4dp"
+                android:background="@color/colorGrey"
+                android:text="Log In"
+                android:textSize="16sp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textColor="@color/colorPrimary"
+                android:visibility="visible" />
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/avi1"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_thirty_three"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:layout_marginBottom="10dp"
+                app:indicatorColor="@color/colorAccent"
+                app:indicatorName="BallSpinFadeLoaderIndicator" />
+
+            <TextView
+                android:id="@+id/forget_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:textAlignment="center"
+                android:text="Forgot Password? "
+                android:fontFamily="@font/nunito_regular"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                />
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="© 2020 FaithModel Nig. Ltd."
+                android:textAlignment="center"
+                android:layout_margin="2dp"
+                android:fontFamily="@font/nunito_regular"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+               />
+
+
+        </LinearLayout>
+
+        </ScrollView>
+
+
+
+
+    </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</FrameLayout>
