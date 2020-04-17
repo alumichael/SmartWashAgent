@@ -21,4 +21,10 @@
         <item> Received Order </item>
 
     </string-array>
+
+    <string-array name="cloth_type_array">
+        <item> Cloth Type </item>
+        <item> Special Cloth </item>
+        <item> Normal Cloth </item>
+    </string-array>
 </resources>

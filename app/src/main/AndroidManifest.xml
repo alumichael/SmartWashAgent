@@ -17,6 +17,12 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".activities.MainActivity" />
+
         <activity android:name=".activities.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,6 +34,9 @@
         <activity android:name=".activities.ForgetPassword" />
         <activity android:name=".activities.CheckOrder" />
         <activity android:name=".activities.ManageClothing" />
+        <activity android:name=".activities.AcknowledgeActivity" />
+        <activity android:name=".activities.ManageSubAdmin" />
+        <activity android:name=".activities.AboutActivity" />
     </application>
 
 </manifest>

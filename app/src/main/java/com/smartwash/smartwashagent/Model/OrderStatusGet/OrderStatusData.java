@@ -15,6 +15,15 @@ public class OrderStatusData implements Serializable
     @SerializedName("userID")
     @Expose
     private String userID;
+    @SerializedName("fullname")
+    @Expose
+    private String fullname;
+    @SerializedName("phone")
+    @Expose
+    private String phone;
+    @SerializedName("address")
+    @Expose
+    private String address;
     @SerializedName("category")
     @Expose
     private String category;
@@ -29,6 +38,7 @@ public class OrderStatusData implements Serializable
     private List<OrderList> orders = null;
 
 
+
     public String getOrderID() {
         return orderID;
     }
@@ -39,11 +49,26 @@ public class OrderStatusData implements Serializable
     }
 
 
+    public String getFullname() {
+        return fullname;
+    }
+
+
+
+    public String getPhone() {
+        return phone;
+    }
+
+
+
+    public String getAddress() {
+        return address;
+    }
+
 
     public String getCategory() {
         return category;
     }
-
 
 
     public String getTotalAmount() {
@@ -51,15 +76,15 @@ public class OrderStatusData implements Serializable
     }
 
 
-
     public String getStatus() {
         return status;
     }
 
 
-
-    public List<OrderList> getOrders() {
+    public List<OrderList> getOrderLists() {
         return orders;
     }
 
+
 }
+

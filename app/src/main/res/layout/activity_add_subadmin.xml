@@ -23,7 +23,7 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-<LinearLayout
+<!--<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -54,9 +54,6 @@
         android:id="@+id/inputLayoutServiceName"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-        android:paddingTop="@dimen/size_four"
-        android:paddingBottom="@dimen/size_twelve"
         >
 
         <EditText
@@ -78,9 +75,6 @@
         android:id="@+id/inputLayoutPrice"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-        android:paddingTop="@dimen/size_four"
-        android:paddingBottom="@dimen/size_twelve"
         >
 
         <EditText
@@ -98,7 +92,7 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- <Spinner
+    &lt;!&ndash; <Spinner
          android:id="@+id/service_type"
          android:layout_width="match_parent"
          android:layout_height="50dp"
@@ -107,7 +101,7 @@
          android:background="@drawable/spinner_bg"
          android:clickable="false"
 
-         />-->
+         />&ndash;&gt;
 
     <Button
         android:id="@+id/add_button"
@@ -203,7 +197,7 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
-</LinearLayout>
+</LinearLayout>-->
 
 
 </LinearLayout>

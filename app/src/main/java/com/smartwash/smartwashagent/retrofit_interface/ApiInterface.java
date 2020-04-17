@@ -2,8 +2,14 @@ package com.smartwash.smartwashagent.retrofit_interface;
 
 
 
+import com.smartwash.smartwashagent.Model.Category.AddCategory;
 import com.smartwash.smartwashagent.Model.Category.CategoryGetObj;
+import com.smartwash.smartwashagent.Model.Category.DeleteCategory;
+import com.smartwash.smartwashagent.Model.Category.UpdateCategory;
+import com.smartwash.smartwashagent.Model.ClothList.AddCloth;
 import com.smartwash.smartwashagent.Model.ClothList.ClothGetObj;
+import com.smartwash.smartwashagent.Model.ClothList.DeleteCloth;
+import com.smartwash.smartwashagent.Model.ClothList.UpdateCloth;
 import com.smartwash.smartwashagent.Model.LoginModel.UserGetObj;
 import com.smartwash.smartwashagent.Model.LoginModel.UserPostData;
 import com.smartwash.smartwashagent.Model.Message;
@@ -32,8 +38,26 @@ public interface ApiInterface {
     @POST("api/auth/register.php")
     Call<Message> register(@Body RegisterUserPost regPostData);
 
+    @POST("api/category/addCategory.php")
+    Call<Message> add_service(@Body AddCategory addCategory);
+
+    @POST("api/cloth/addCloth.php")
+    Call<Message> add_cloth(@Body AddCloth a);
+
+    @POST("api/category/updateCategory.php")
+    Call<Message> update_service(@Body UpdateCategory updateCategory);
+
+    @POST("api/cloth/updateCloth.php")
+    Call<Message> update_cloth(@Body UpdateCloth updateCloth);
+
     @POST("api/auth/login.php")
     Call<UserGetObj> login(@Body UserPostData userPostData);
+
+    @POST("api/category/deleteCategory.php")
+    Call<Message> delete_service(@Body DeleteCategory deleteCategory);
+
+    @POST("api/cloth/deleteCloth.php")
+    Call<Message> delete_cloth(@Body DeleteCloth deleteCloth);
 
     @POST("api/Auth/updateprofile.php")
     Call<ResponseBody> update_profile(@Body Profile_updatePost profile_updatePost);
@@ -58,6 +82,9 @@ public interface ApiInterface {
 
     @POST("api/order/fetchuserorders.php")
     Call<OrderStatusHead> fetch_order_status(@Body OnlyIDRequest userId);
+
+    @GET("api/order/fetchallorders.php")
+    Call<OrderStatusHead> fetch_all_order_status();
 
 
     @POST("api/wallet/debitwallet.php")

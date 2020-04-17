@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         int itemId = item.getItemId();
         if (itemId == R.id.action_about) {
 
-            //    startActivity(new Intent(MainActivity.this,AboutActivity.class));
+               startActivity(new Intent(MainActivity.this,AboutActivity.class));
 
             return true;
         }/* else if (itemId == R.id.action_change_pass) {

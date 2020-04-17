@@ -11,7 +11,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorWhite"
         android:orientation="vertical">
 
 
@@ -34,9 +34,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="SmartWash \n Agent"
-                android:fontFamily="@font/nunito_bold"
-                android:textColor="#000"
+                android:text="SmartWash \n-Agent-"
+                android:textColor="@color/colorPrimaryDark"
                 android:textAlignment="center"
                 android:textSize="21sp"
                 />

@@ -397,13 +397,34 @@ public class UserPreferences {
 
 
 
-    public void setCategory(String category) {
+    public void setName(String category) {
         editor.putString(Constant.CATE_NAME, category);
         editor.apply();
     }
 
-    public String getCategory() {
+    public String getName() {
         return sharedPreferences.getString(Constant.CATE_NAME, "");
+    }
+
+
+
+    public void setPrice(String categoryPrice) {
+        editor.putString(Constant.CATE_PRICE, categoryPrice);
+        editor.apply();
+    }
+
+    public String getPrice() {
+        return sharedPreferences.getString(Constant.CATE_PRICE, "");
+    }
+
+
+    public void setId(String categoryPrice) {
+        editor.putString(Constant.ID, categoryPrice);
+        editor.apply();
+    }
+
+    public String getId() {
+        return sharedPreferences.getString(Constant.ID, "");
     }
 
 
