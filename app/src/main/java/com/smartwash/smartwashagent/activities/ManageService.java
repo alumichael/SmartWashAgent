@@ -1,7 +1,5 @@
 package com.smartwash.smartwashagent.activities;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -10,11 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +20,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputLayout;
 import com.smartwash.smartwashagent.Model.Category.AddCategory;
 import com.smartwash.smartwashagent.Model.Category.CategoryGetData;
 import com.smartwash.smartwashagent.Model.Category.CategoryGetObj;
@@ -32,15 +27,9 @@ import com.smartwash.smartwashagent.Model.Category.DeleteCategory;
 import com.smartwash.smartwashagent.Model.Category.UpdateCategory;
 import com.smartwash.smartwashagent.Model.Errors.APIError;
 import com.smartwash.smartwashagent.Model.Errors.ErrorUtils;
-import com.smartwash.smartwashagent.Model.LoginModel.UserGetObj;
-import com.smartwash.smartwashagent.Model.LoginModel.UserPostData;
 import com.smartwash.smartwashagent.Model.Message;
-import com.smartwash.smartwashagent.Model.OnlyIDRequest;
-import com.smartwash.smartwashagent.Model.OrderStatusGet.OrderStatusHead;
 import com.smartwash.smartwashagent.R;
-import com.smartwash.smartwashagent.adapters.CardAdapter;
 import com.smartwash.smartwashagent.adapters.ServiceAdapter;
-import com.smartwash.smartwashagent.fragments.Fragment_Dashboard;
 import com.smartwash.smartwashagent.retrofit_interface.ApiInterface;
 import com.smartwash.smartwashagent.retrofit_interface.ServiceGenerator;
 import com.wang.avi.AVLoadingIndicatorView;
@@ -63,14 +52,18 @@ public class ManageService extends AppCompatActivity implements SwipeRefreshLayo
     Toolbar mToolbar;
     @BindView(R.id.input_layout)
     LinearLayout mInputLayout;
-    @BindView(R.id.inputLayoutServiceName)
-    TextInputLayout mInputLayoutServiceName;
+
     @BindView(R.id.service_editxt)
     EditText mServiceEditxt;
-    @BindView(R.id.inputLayoutPrice)
-    TextInputLayout mInputLayoutPrice;
+
+    @BindView(R.id.min_price_editxt)
+    EditText mMinPriceEditxt;
+
     @BindView(R.id.price_editxt)
     EditText mPriceEditxt;
+
+    @BindView(R.id.description_editxt)
+    EditText mDescriptnEditxt;
 
     @BindView(R.id.contrl_text)
     TextView mContrlTxt;
@@ -97,6 +90,9 @@ public class ManageService extends AppCompatActivity implements SwipeRefreshLayo
     View view;
 
     ProgressDialog dialog;
+
+    String service="";
+    String price="";
 
     NetworkConnection networkConnection = new NetworkConnection();
     ApiInterface client = ServiceGenerator.createService(ApiInterface.class);
@@ -135,7 +131,7 @@ public class ManageService extends AppCompatActivity implements SwipeRefreshLayo
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         getSupportActionBar().setTitle(title);
-        getSupportActionBar().setElevation(0);
+        getSupportActionBar().setElevation(4);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_keyboard_arrow_left_black_24dp);
 
 
@@ -164,7 +160,7 @@ public class ManageService extends AppCompatActivity implements SwipeRefreshLayo
 
 
     private void getServices(){
-
+        mNotFoundLayout.setVisibility(View.GONE);
         if (networkConnection.isNetworkConnected(this)) {
             //get client and call object for request
 
@@ -177,7 +173,7 @@ public class ManageService extends AppCompatActivity implements SwipeRefreshLayo
                         try {
                             APIError apiError = ErrorUtils.parseError(response);
 
-                            showMessage("Fetch Failed: " + apiError.getErrors());
+                            showMessage("Fetch Failed");
                             Log.i("Invalid Fetch", String.valueOf(apiError.getErrors()));
                             //Log.i("Invalid Entry", response.errorBody().toString());
                             mSwipeRefreshLayout.setRefreshing(false);
@@ -214,7 +210,7 @@ public class ManageService extends AppCompatActivity implements SwipeRefreshLayo
 
                 @Override
                 public void onFailure(Call<CategoryGetObj> call, Throwable t) {
-                    showMessage("Fetch failed, check your internet " + t.getMessage());
+                    showMessage("Fetch failed, check your internet ");
                     Log.i("GEtError", t.getMessage());
                     mSwipeRefreshLayout.setRefreshing(false);
                 }
@@ -252,6 +248,8 @@ public class ManageService extends AppCompatActivity implements SwipeRefreshLayo
 
             mServiceEditxt.setText("");
             mPriceEditxt.setText("");
+            mDescriptnEditxt.setText("");
+            mMinPriceEditxt.setText("");
             mContrlTxt.setText("Add Service");
             mUpdateButton.setVisibility(View.GONE);
             mAddButton.setVisibility(View.VISIBLE);
@@ -300,16 +298,21 @@ public class ManageService extends AppCompatActivity implements SwipeRefreshLayo
             boolean isValid = true;
 
             if (mServiceEditxt.getText().toString().isEmpty()) {
-                mInputLayoutServiceName.setError("Service Name is required!");
+                showMessage("Service Name is required!");
                 isValid = false;
-            }  else {
-                mInputLayoutServiceName.setErrorEnabled(false);
+            }
+            if (mDescriptnEditxt.getText().toString().isEmpty()) {
+                showMessage("Description is required!");
+                isValid = false;
+            }
+            if (mMinPriceEditxt.getText().toString().isEmpty()) {
+                showMessage("Minimum Order Price is required!");
+                isValid = false;
             }
             if (mPriceEditxt.getText().toString().isEmpty()) {
-                mInputLayoutPrice.setError("Price is required!");
+                showMessage("Price is required!");
+
                 isValid = false;
-            }  else {
-                mInputLayoutPrice.setErrorEnabled(false);
             }
 
             if (isValid) {
@@ -325,23 +328,29 @@ public class ManageService extends AppCompatActivity implements SwipeRefreshLayo
 
 
 
-
     private void validation(){
 
         if (networkConnection.isNetworkConnected(this)) {
             boolean isValid = true;
 
             if (mServiceEditxt.getText().toString().isEmpty()) {
-                mInputLayoutServiceName.setError("Service Name is required!");
+                showMessage("Service Name is required!");
+
                 isValid = false;
-            }  else {
-                mInputLayoutServiceName.setErrorEnabled(false);
             }
-            if (mPriceEditxt.getText().toString().isEmpty()) {
-                mInputLayoutPrice.setError("Price is required!");
+            if (mDescriptnEditxt.getText().toString().isEmpty()) {
+                showMessage("Description is required!");
+
                 isValid = false;
-            }  else {
-                mInputLayoutPrice.setErrorEnabled(false);
+            }
+            if (mMinPriceEditxt.getText().toString().isEmpty()) {
+                showMessage("Minimum Order Price is required!");
+                isValid = false;
+            }
+
+            if (mPriceEditxt.getText().toString().isEmpty()) {
+                showMessage("Price is required!");
+                isValid = false;
             }
 
             if (isValid) {
@@ -356,13 +365,13 @@ public class ManageService extends AppCompatActivity implements SwipeRefreshLayo
     }
 
 
-
     private void addService(){
 
         mAddButton.setVisibility(View.GONE);
         mProgressbar.setVisibility(View.VISIBLE);
 
         AddCategory addCategory=new AddCategory(mServiceEditxt.getText().toString(),
+                mDescriptnEditxt.getText().toString(),  mMinPriceEditxt.getText().toString(),
                 Integer.parseInt(mPriceEditxt.getText().toString()));
 
         Call<Message> call = client.add_service(addCategory);
@@ -417,14 +426,13 @@ public class ManageService extends AppCompatActivity implements SwipeRefreshLayo
 
                     if(response.code()==200) {
 
-
-
-
                         String status=response.body().getStatus();
                         if(status.equals("success")) {
+
                             mServiceEditxt.setText("");
                             mPriceEditxt.setText("");
-
+                            mDescriptnEditxt.setText("");
+                            mMinPriceEditxt.setText("");
                             init();
 
                         }else{
@@ -465,8 +473,8 @@ public class ManageService extends AppCompatActivity implements SwipeRefreshLayo
         mAddButton.setVisibility(View.GONE);
         mProgressbar.setVisibility(View.VISIBLE);
 
-        UpdateCategory updateCategory=new UpdateCategory(userPreferences.getId(),mServiceEditxt.getText().toString(),
-                mPriceEditxt.getText().toString());
+        UpdateCategory updateCategory=new UpdateCategory(userPreferences.getId(),mServiceEditxt.getText().toString(),mDescriptnEditxt.getText().toString(),
+                mMinPriceEditxt.getText().toString(),mPriceEditxt.getText().toString());
 
         Call<Message> call = client.update_service(updateCategory);
 
@@ -496,6 +504,8 @@ public class ManageService extends AppCompatActivity implements SwipeRefreshLayo
                             showMessage("Invalid entry");
                             mServiceEditxt.setText("");
                             mPriceEditxt.setText("");
+                            mDescriptnEditxt.setText("");
+                            mMinPriceEditxt.setText("");
                             mContrlTxt.setText("Add Service");
                             mUpdateButton.setVisibility(View.GONE);
                             mAddButton.setVisibility(View.VISIBLE);
@@ -511,6 +521,8 @@ public class ManageService extends AppCompatActivity implements SwipeRefreshLayo
                             Log.i("Invalid Entry", response.errorBody().toString());
                             mServiceEditxt.setText("");
                             mPriceEditxt.setText("");
+                            mDescriptnEditxt.setText("");
+                            mMinPriceEditxt.setText("");
                             mContrlTxt.setText("Add Service");
                             mUpdateButton.setVisibility(View.GONE);
                             mAddButton.setVisibility(View.VISIBLE);
@@ -521,6 +533,8 @@ public class ManageService extends AppCompatActivity implements SwipeRefreshLayo
                             showMessage("Update Failed");
                             mServiceEditxt.setText("");
                             mPriceEditxt.setText("");
+                            mDescriptnEditxt.setText("");
+                            mMinPriceEditxt.setText("");
                             mContrlTxt.setText("Add Service");
                             mUpdateButton.setVisibility(View.GONE);
                             mAddButton.setVisibility(View.VISIBLE);
@@ -531,6 +545,8 @@ public class ManageService extends AppCompatActivity implements SwipeRefreshLayo
                         mProgressbar.setVisibility(View.GONE);
                         mServiceEditxt.setText("");
                         mPriceEditxt.setText("");
+                        mDescriptnEditxt.setText("");
+                        mMinPriceEditxt.setText("");
                         mContrlTxt.setText("Add Service");
                         mUpdateButton.setVisibility(View.GONE);
                         mAddButton.setVisibility(View.VISIBLE);
@@ -540,6 +556,8 @@ public class ManageService extends AppCompatActivity implements SwipeRefreshLayo
 
                     mServiceEditxt.setText("");
                     mPriceEditxt.setText("");
+                    mDescriptnEditxt.setText("");
+                    mMinPriceEditxt.setText("");
                     mContrlTxt.setText("Add Service");
                     mUpdateButton.setVisibility(View.GONE);
                     mAddButton.setVisibility(View.VISIBLE);
@@ -565,6 +583,8 @@ public class ManageService extends AppCompatActivity implements SwipeRefreshLayo
                     showMessage("Update Failed: " + e.getMessage());
                     mServiceEditxt.setText("");
                     mPriceEditxt.setText("");
+                    mDescriptnEditxt.setText("");
+                    mMinPriceEditxt.setText("");
                     mContrlTxt.setText("Add Service");
                     mUpdateButton.setVisibility(View.GONE);
                     mAddButton.setVisibility(View.VISIBLE);
@@ -585,6 +605,8 @@ public class ManageService extends AppCompatActivity implements SwipeRefreshLayo
                 Log.i("GEtError", t.getMessage());
                 mServiceEditxt.setText("");
                 mPriceEditxt.setText("");
+                mDescriptnEditxt.setText("");
+                mMinPriceEditxt.setText("");
                 mUpdateButton.setVisibility(View.GONE);
                 mAddButton.setVisibility(View.VISIBLE);
                 mProgressbar.setVisibility(View.GONE);
@@ -689,13 +711,14 @@ public class ManageService extends AppCompatActivity implements SwipeRefreshLayo
         }
 
     @Override
-    public void onItemClicked(String cate_name, String cate_price, String cate_id) {
+    public void onItemClicked(String cate_name,String cate_desc, String cate_price, String cate_id) {
 
 
         mServiceEditxt.setText(cate_name);
         mPriceEditxt.setText(cate_price);
+        mDescriptnEditxt.setText(cate_desc);
+        mMinPriceEditxt.setText("");
         mContrlTxt.setText("Update Service");
-
         mUpdateButton.setVisibility(View.VISIBLE);
         mAddButton.setVisibility(View.GONE);
 

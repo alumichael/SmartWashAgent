@@ -74,7 +74,7 @@ public class ClothingAdapter extends RecyclerView.Adapter<ClothingAdapter.MyView
             }
 
         }else{
-            holder.mServiceAmount.setVisibility(View.INVISIBLE);
+            holder.mServiceAmount.setVisibility(View.GONE);
         }
 
 

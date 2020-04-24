@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             mPermissionCheckClass.requestPermission();
         }
 
-        applyToolbar("Dashboard", "We make it clean.");
+        applyToolbar("Admin Board", "We make it clean.");
 
 
         fragment = new Fragment_Dashboard();

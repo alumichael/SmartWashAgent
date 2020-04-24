@@ -63,6 +63,7 @@ public class AcknowledgeActivity extends AppCompatActivity implements View.OnCli
     String fullname="";
     String phone_no="";
     String address="";
+    String date_time="";
 
     UserPreferences userPreferences;
 
@@ -87,6 +88,7 @@ public class AcknowledgeActivity extends AppCompatActivity implements View.OnCli
         fullname=intent.getStringExtra(Constant.NAME);
         phone_no=intent.getStringExtra(Constant.PHONE);
         address=intent.getStringExtra(Constant.ADDR1);
+        date_time=intent.getStringExtra(Constant.DAY_PHONE);
 
         mCustomerName.setText(fullname);
         mCustomerPhoneNO.setText(phone_no);

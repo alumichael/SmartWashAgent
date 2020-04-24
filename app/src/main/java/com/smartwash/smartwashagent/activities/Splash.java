@@ -38,6 +38,8 @@ public class Splash extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
 
+        UserPreferences userPreferences = new UserPreferences(this);
+
         if (Build.VERSION.SDK_INT >= 24) {
             try {
                 Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
@@ -48,8 +50,41 @@ public class Splash extends AppCompatActivity {
         }
 
 
+        //i removed ! just to test, i will replace back
+        if (userPreferences.isFirstTimeLaunch()) {
+
             // load the animation
-        slide_from_up = AnimationUtils.loadAnimation(getApplicationContext(),
+            slide_from_up = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.slide_from_up);
+
+            blink = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.blink);
+
+            //start animation
+            imgLogo.startAnimation(slide_from_up);
+
+            txtDesc.startAnimation(blink);
+            //txtVersion.startAnimation(blink);
+
+            Thread myThread = new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        sleep(1500);
+                        userPreferences.setFirstTimeLaunch(false);
+                        startActivity(new Intent(getApplicationContext(), SignIn.class));
+                        finish();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            myThread.start();
+        }else{
+
+
+            // load the animation
+            slide_from_up = AnimationUtils.loadAnimation(getApplicationContext(),
                     R.anim.slide_from_up);
 
             blink = AnimationUtils.loadAnimation(getApplicationContext(),
@@ -62,15 +97,13 @@ public class Splash extends AppCompatActivity {
             //txtVersion.startAnimation(blink);
 
 
-
-            Thread myThread = new Thread(){
+            Thread myThread = new Thread() {
                 @Override
                 public void run() {
                     try {
-                        sleep(3000);
+                        sleep(1500);
 
-                        //Go to SignIN
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         finish();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -78,6 +111,11 @@ public class Splash extends AppCompatActivity {
                 }
             };
             myThread.start();
+
+
+
+        }
+
 
     }
 

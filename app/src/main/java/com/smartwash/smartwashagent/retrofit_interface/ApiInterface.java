@@ -2,6 +2,9 @@ package com.smartwash.smartwashagent.retrofit_interface;
 
 
 
+import com.smartwash.smartwashagent.Model.Banner.Addbanner;
+import com.smartwash.smartwashagent.Model.Banner.BannerGetObj;
+import com.smartwash.smartwashagent.Model.Banner.DeleteBanner;
 import com.smartwash.smartwashagent.Model.Category.AddCategory;
 import com.smartwash.smartwashagent.Model.Category.CategoryGetObj;
 import com.smartwash.smartwashagent.Model.Category.DeleteCategory;
@@ -10,8 +13,8 @@ import com.smartwash.smartwashagent.Model.ClothList.AddCloth;
 import com.smartwash.smartwashagent.Model.ClothList.ClothGetObj;
 import com.smartwash.smartwashagent.Model.ClothList.DeleteCloth;
 import com.smartwash.smartwashagent.Model.ClothList.UpdateCloth;
-import com.smartwash.smartwashagent.Model.LoginModel.UserGetObj;
-import com.smartwash.smartwashagent.Model.LoginModel.UserPostData;
+import com.smartwash.smartwashagent.Model.LoginModel.AdminGetObj;
+import com.smartwash.smartwashagent.Model.LoginModel.AdminPostData;
 import com.smartwash.smartwashagent.Model.Message;
 import com.smartwash.smartwashagent.Model.OnlyIDAmountRequest;
 import com.smartwash.smartwashagent.Model.OnlyIDRequest;
@@ -35,11 +38,14 @@ import retrofit2.http.POST;
 
 public interface ApiInterface {
 
-    @POST("api/auth/register.php")
+    @POST("api/Auth/adminregister.php")
     Call<Message> register(@Body RegisterUserPost regPostData);
 
     @POST("api/category/addCategory.php")
     Call<Message> add_service(@Body AddCategory addCategory);
+
+    @POST("api/banner/addBanner.php")
+    Call<Message> add_banner(@Body Addbanner addbanner);
 
     @POST("api/cloth/addCloth.php")
     Call<Message> add_cloth(@Body AddCloth a);
@@ -51,10 +57,16 @@ public interface ApiInterface {
     Call<Message> update_cloth(@Body UpdateCloth updateCloth);
 
     @POST("api/auth/login.php")
-    Call<UserGetObj> login(@Body UserPostData userPostData);
+    Call<AdminGetObj> login(@Body AdminPostData adminPostData);
+
+    @POST("api/Auth/adminLogin.php")
+    Call<AdminGetObj> adminlogin(@Body AdminPostData adminPostData);
 
     @POST("api/category/deleteCategory.php")
     Call<Message> delete_service(@Body DeleteCategory deleteCategory);
+
+    @POST("api/banner/deleteBanner.php")
+    Call<Message> delete_banner(@Body DeleteBanner deleteBanner);
 
     @POST("api/cloth/deleteCloth.php")
     Call<Message> delete_cloth(@Body DeleteCloth deleteCloth);
@@ -70,6 +82,9 @@ public interface ApiInterface {
 
     @GET("api/cloth/fetchCloth.php")
     Call<ClothGetObj> fetch_cloths();
+
+    @GET("api/banner/fetchBanners.php")
+    Call<BannerGetObj> fetch_banner();
 
 
     @POST("api/wallet/fetchwallet.php")

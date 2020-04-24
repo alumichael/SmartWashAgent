@@ -16,6 +16,7 @@ import com.smartwash.smartwashagent.Model.Card;
 import com.smartwash.smartwashagent.R;
 import com.smartwash.smartwashagent.activities.CheckOrder;
 import com.smartwash.smartwashagent.activities.Constant;
+import com.smartwash.smartwashagent.activities.ManageBanner;
 import com.smartwash.smartwashagent.activities.ManageClothing;
 import com.smartwash.smartwashagent.activities.ManageService;
 import com.smartwash.smartwashagent.activities.ManageSubAdmin;
@@ -65,9 +66,13 @@ public void onBindViewHolder(@NonNull MyViewHolder holder, int i) {
                 case "Check Order":
                         nextActivity("Check Order", CheckOrder.class);
                         break;
-                case "Manage Sub-Admin":
-                    nextActivity("Manage Sub-Admin",  ManageSubAdmin.class);
+                case "Register Admin":
+                    nextActivity("Register Admin",  ManageSubAdmin.class);
                         break;
+                case "Manage Banner":
+                        nextActivity("Manage Banner",  ManageBanner.class);
+                        break;
+
 
 
                 }

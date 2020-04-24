@@ -406,6 +406,15 @@ public class UserPreferences {
         return sharedPreferences.getString(Constant.CATE_NAME, "");
     }
 
+    public void setDescription(String description) {
+        editor.putString(Constant.CATE_DESC, description);
+        editor.apply();
+    }
+
+    public String getDescription() {
+        return sharedPreferences.getString(Constant.CATE_DESC, "");
+    }
+
 
 
     public void setPrice(String categoryPrice) {
@@ -435,6 +444,16 @@ public class UserPreferences {
 
     public int getTotalPrice() {
         return sharedPreferences.getInt(Constant.TOTAL_PRICE, 0);
+    }
+
+
+    public void setBannerUrl(String bannerUrl) {
+        editor.putString(Constant.BANNER_URL, bannerUrl);
+        editor.apply();
+    }
+
+    public String getBannerUrl() {
+        return sharedPreferences.getString(Constant.BANNER_URL, "");
     }
    
 

@@ -26,12 +26,17 @@ public class RegisterUserPost implements Serializable {
     @Expose
     public String password;
 
-    public RegisterUserPost(String fullname, String email, String phone,String address, String password) {
+    @SerializedName("role")
+    @Expose
+    public String role;
+
+    public RegisterUserPost(String fullname, String email, String phone,String address, String password,String role) {
         this.fullname = fullname;
         this.email = email;
         this.phone = phone;
         this.address = address;
         this.password = password;
+        this.role = role;
     }
 
 

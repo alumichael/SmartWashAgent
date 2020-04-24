@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class UserGetData implements Serializable
+public class AdminGetData implements Serializable
 {
 
     @SerializedName("id")
@@ -34,13 +34,7 @@ public class UserGetData implements Serializable
     @Expose
     private String role;
 
-    @SerializedName("wallet")
-    @Expose
-    private Wallet wallet;
 
-    public Wallet getWallet() {
-        return wallet;
-    }
 
     public String getId() {
         return id;

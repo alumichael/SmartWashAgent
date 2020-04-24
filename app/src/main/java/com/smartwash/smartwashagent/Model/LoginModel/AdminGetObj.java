@@ -6,13 +6,13 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 
-public class UserGetObj implements Serializable
+public class AdminGetObj implements Serializable
 
 {
 
     @SerializedName("data")
     @Expose
-    private UserGetData data;
+    private AdminGetData data;
 
     @SerializedName("status")
     @Expose
@@ -22,7 +22,7 @@ public class UserGetObj implements Serializable
     private String message;
 
 
-    public UserGetData getUser() {
+    public AdminGetData getUser() {
         return data;
     }
 

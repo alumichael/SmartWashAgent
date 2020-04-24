@@ -17,7 +17,7 @@
         android:fitsSystemWindows="true"
         app:popupTheme="@style/MyPopupTheme"
         android:theme="@style/MyToolBarTheme"
-        app:titleTextColor="#FFFFFF"
+        app:contentInsetStartWithNavigation="0dp"
         app:titleTextAppearance="@style/Toolbar.TitleText"
         app:title="@string/app_name">
 
@@ -50,19 +50,12 @@
         android:fontFamily="@font/nunito_semibold"/>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputLayoutClothName"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="@dimen/size_four"
-        android:paddingBottom="@dimen/size_twelve"
-        >
 
         <EditText
             android:id="@+id/service_editxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_two"
+            android:layout_marginTop="@dimen/size_four"
             android:background="@drawable/spinner_bg"
             android:hint="Cloth Name e.g Suit"
             android:importantForAutofill="noExcludeDescendants"
@@ -71,7 +64,7 @@
             android:padding="@dimen/size_ten"
             tools:targetApi="o"
             />
-    </com.google.android.material.textfield.TextInputLayout>
+
         <Spinner
        android:id="@+id/cloth_type"
        android:layout_width="match_parent"
@@ -83,19 +76,13 @@
 
        />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputLayoutPrice"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="@dimen/size_four"
-        android:paddingBottom="@dimen/size_twelve"
-        >
+
 
         <EditText
             android:id="@+id/price_editxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_two"
+            android:layout_marginTop="@dimen/size_four"
             android:background="@drawable/spinner_bg"
             android:hint="Price per cloth e.g 50"
             android:importantForAutofill="noExcludeDescendants"
@@ -104,7 +91,7 @@
             android:padding="@dimen/size_ten"
             tools:targetApi="o"
             />
-    </com.google.android.material.textfield.TextInputLayout>
+
 
 
 
@@ -179,7 +166,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:fontFamily="@font/montserrat_regular"
-            android:text="No service found"
+            android:text="No clothing found"
             android:textAlignment="center"
             android:textSize="14sp" />
 

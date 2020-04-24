@@ -16,8 +16,10 @@ public class Constant {
     public static final String WALLET_AMOUNT_FUNDING = "wallet_amount";
     public static final String WALLET_DESC = "fund_desc";
     public static final String CATE_NAME= "cate_name";
+    public static final String CATE_DESC= "cate_desc";
     public static final String CATE_PRICE= "cate_price";
     public static final String CARD_OPTION_TITLE = "option_title";
+    public static final String BANNER_URL = "banner_url";
 
     public static String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
     public static String IS_SENT_SUCCESS = "IsSentSuccess";

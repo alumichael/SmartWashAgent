@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -55,10 +56,16 @@ public class CheckOrderAdapter extends RecyclerView.Adapter<CheckOrderAdapter.My
 
         holder.mStatusCategory.setText(transact.getCategory());
         String amount_text="Total Amount:NGN "+transact.getTotalAmount();
+        String name="Name: "+transact.getFullname();
+        String number="Contact No: "+transact.getPhone();
+        String address="Address: "+transact.getAddress();
+        String date_time="Date|Time: "+transact.getCreated_date();
+
         holder.mTransactAmount.setText(amount_text);
-        holder.mCustomerName.setText(transact.getFullname());
-        holder.mCustomerPhoneNo.setText(transact.getPhone());
-        holder.mCustomerAddr.setText(transact.getAddress());
+        holder.mCustomerName.setText(name);
+        holder.mCustomerPhoneNo.setText(number);
+        holder.mCustomerAddr.setText(address);
+        holder.mDateTime.setText(date_time);
 
         if(transact.getStatus().equals("pending")){
             holder.mStatusFlag.setBackgroundColor(Color.RED);
@@ -108,17 +115,16 @@ public class CheckOrderAdapter extends RecyclerView.Adapter<CheckOrderAdapter.My
 
             holder.setItemClickListener(pos -> {
 
-
-            /*    nextActivity(OrderStatusList.get(pos).getOrderID(),OrderStatusList.get(pos).getUserID(),"Delivered",
+                nextActivity(OrderStatusList.get(pos).getOrderID(),OrderStatusList.get(pos).getUserID(),"Delivered",
                         OrderStatusList.get(pos).getFullname(),OrderStatusList.get(pos).getPhone(),
-                        OrderStatusList.get(pos).getAddress(),AcknowledgeActivity.class);*/
+                        OrderStatusList.get(pos).getAddress(),OrderStatusList.get(pos).getCreated_date(),AcknowledgeActivity.class);
 
             });
 
         }else{
             holder.setItemClickListener(pos -> {
 
-
+                Toast.makeText(context,"Complete Delivery",Toast.LENGTH_LONG).show();
 
             });
         }
@@ -128,7 +134,7 @@ public class CheckOrderAdapter extends RecyclerView.Adapter<CheckOrderAdapter.My
     }
 
     private void nextActivity(String orderId,String userId,String status,String fulllname,String phone_no,
-            String address, Class productActivityClass) {
+            String address,String date_time, Class productActivityClass) {
         Intent i = new Intent(context, productActivityClass);
         i.putExtra(Constant.ORDER_ID, orderId);
         i.putExtra(Constant.CUSTOMER_ID, userId);
@@ -136,6 +142,7 @@ public class CheckOrderAdapter extends RecyclerView.Adapter<CheckOrderAdapter.My
         i.putExtra(Constant.NAME, fulllname);
         i.putExtra(Constant.PHONE, phone_no);
         i.putExtra(Constant.ADDR1, address);
+        i.putExtra(Constant.DAY_PHONE, date_time);
         context.startActivity(i);
     }
 
@@ -159,6 +166,8 @@ public class CheckOrderAdapter extends RecyclerView.Adapter<CheckOrderAdapter.My
         TextView mCustomerPhoneNo;
         @BindView(R.id.customer_addr)
         TextView mCustomerAddr;
+        @BindView(R.id.date_time)
+        TextView mDateTime;
         @BindView(R.id.status_flag)
         TextView mStatusFlag;
         @BindView(R.id.show_more)

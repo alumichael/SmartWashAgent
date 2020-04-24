@@ -16,8 +16,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.smartwash.smartwashagent.Model.Errors.APIError;
 import com.smartwash.smartwashagent.Model.Errors.ErrorUtils;
-import com.smartwash.smartwashagent.Model.LoginModel.UserGetObj;
-import com.smartwash.smartwashagent.Model.LoginModel.UserPostData;
+import com.smartwash.smartwashagent.Model.LoginModel.AdminGetObj;
+import com.smartwash.smartwashagent.Model.LoginModel.AdminPostData;
 import com.smartwash.smartwashagent.R;
 import com.smartwash.smartwashagent.retrofit_interface.ApiInterface;
 import com.smartwash.smartwashagent.retrofit_interface.ServiceGenerator;
@@ -90,7 +90,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener{
         setUp();
 
         mSigninBtn.setOnClickListener(this);
-        mForgetPass.setOnClickListener(this);
+       // mForgetPass.setOnClickListener(this);
     }
 
     private void setUp(){
@@ -173,26 +173,26 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener{
         mSigninBtn.setVisibility(View.GONE);
         mAvi1.setVisibility(View.VISIBLE);
 
-        UserPostData userPostData=new UserPostData(mEmailEditxt.getText().toString(),
+        AdminPostData adminPostData =new AdminPostData(mEmailEditxt.getText().toString(),
                 mPasswordEditxt.getText().toString()
 
         );
-        Log.i("UserObj",userPostData.toString());
+        Log.i("UserObj", adminPostData.toString());
 
-        sentNetworkRequest(userPostData);
+        sentNetworkRequest(adminPostData);
     }
 
-    private  void sentNetworkRequest(UserPostData userPostObj){
+    private  void sentNetworkRequest(AdminPostData userPostObj){
         try {
 
             //get client and call object for request
             ApiInterface client = ServiceGenerator.createService(ApiInterface.class);
 
-            Call<UserGetObj> call = client.login(userPostObj);
+            Call<AdminGetObj> call = client.adminlogin(userPostObj);
 
-            call.enqueue(new Callback<UserGetObj>() {
+            call.enqueue(new Callback<AdminGetObj>() {
                 @Override
-                public void onResponse(Call<UserGetObj> call, Response<UserGetObj> response) {
+                public void onResponse(Call<AdminGetObj> call, Response<AdminGetObj> response) {
                     if(response.code()==400){
                         showMessage("Check your internet connection");
                         return;
@@ -248,7 +248,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener{
                                 phone_no = response.body().getUser().getPhone();
                                 role = response.body().getUser().getRole();
                                 address = response.body().getUser().getAddress();
-                                wallet_balance = response.body().getUser().getWallet().getAmount();
+
                                 try {
                                     userPreferences.setUserEmail(email);
                                     userPreferences.setFullName(fullname);
@@ -256,7 +256,6 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener{
                                     userPreferences.setID(id);
                                     userPreferences.setPhone(phone_no);
                                     userPreferences.setRole(role);
-                                    userPreferences.setWalletBalance(wallet_balance);
                                     userPreferences.setUserAddr1(address);
 
 
@@ -293,7 +292,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener{
                 }
 
                 @Override
-                public void onFailure(Call<UserGetObj> call, Throwable t) {
+                public void onFailure(Call<AdminGetObj> call, Throwable t) {
                     if(message!=null){
                         showMessage(message);
                     }else{

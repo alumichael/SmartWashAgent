@@ -29,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1"
+                android:layout_gravity="center_vertical"
                 >
 
                 <TextView
@@ -45,7 +46,16 @@
                     android:id="@+id/service_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Amount: NGN 500"
+                    android:text="Price: NGN 500"
+                    android:textSize="15sp"
+                    android:layout_gravity="center_vertical"
+                    />
+
+                <TextView
+                    android:id="@+id/min_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Min Order Price: NGN 500"
                     android:textSize="15sp"
                     android:layout_gravity="center_vertical"
                     />

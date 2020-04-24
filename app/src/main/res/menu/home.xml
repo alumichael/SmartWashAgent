@@ -7,47 +7,47 @@
         android:id="@+id/action_about"
         android:orderInCategory="101"
         android:title="About"
-        android:fontFamily="@font/montserrat_light"
+        android:fontFamily="@font/nunito_light"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_share"
         android:orderInCategory="103"
         android:title="Share"
-        android:fontFamily="@font/montserrat_light"
+        android:fontFamily="@font/nunito_light"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_update"
         android:orderInCategory="104"
         android:title="Update"
-        android:fontFamily="@font/montserrat_light"
+        android:fontFamily="@font/nunito_light"
         app:showAsAction="never" />
   <!--  <item
         android:id="@+id/action_change_pass"
         android:orderInCategory="104"
         android:title="Change Password"
-        android:fontFamily="@font/montserrat_light"
+        android:fontFamily="@font/nunito_light"
         app:showAsAction="never" />-->
    <!-- <item
         android:id="@+id/action_email_us"
         android:orderInCategory="105"
         android:title="Email us"
-        android:fontFamily="@font/montserrat_light"
+        android:fontFamily="@font/nunito_light"
         app:showAsAction="never" />-->
 
     <item
         android:id="@+id/action_logout"
         android:orderInCategory="107"
         android:title="Log out"
-        android:fontFamily="@font/montserrat_light"
+        android:fontFamily="@font/nunito_light"
         app:showAsAction="never" />
 
     <!--<item
         android:id="@+id/action_logout"
         android:orderInCategory="105"
         android:title="Log out"
-        android:fontFamily="@font/montserrat_light"
+        android:fontFamily="@font/nunito_light"
         app:showAsAction="never" />-->
 
 </menu>

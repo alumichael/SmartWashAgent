@@ -33,6 +33,9 @@ public class OrderStatusData implements Serializable
     @SerializedName("status")
     @Expose
     private String status;
+    @SerializedName("created_date")
+    @Expose
+    private String created_date;
     @SerializedName("orders")
     @Expose
     private List<OrderList> orders = null;
@@ -80,10 +83,15 @@ public class OrderStatusData implements Serializable
         return status;
     }
 
+    public String getCreated_date() {
+        return created_date;
+    }
+
 
     public List<OrderList> getOrderLists() {
         return orders;
     }
+
 
 
 }

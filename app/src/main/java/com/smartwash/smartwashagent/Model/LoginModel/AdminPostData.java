@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class UserPostData implements Serializable
+public class AdminPostData implements Serializable
 {
 
     @SerializedName("email")
@@ -15,7 +15,7 @@ public class UserPostData implements Serializable
     @Expose
     private String password;
 
-    public UserPostData(String email, String password) {
+    public AdminPostData(String email, String password) {
         super();
         this.email = email;
         this.password = password;

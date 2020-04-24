@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SmartWash</string>
+    <string name="app_name">SmartWash Agent</string>
     <string name="title_home">Home</string>
     <string name="title_location">Locations</string>
     <string name="title_history">Transaction</string>

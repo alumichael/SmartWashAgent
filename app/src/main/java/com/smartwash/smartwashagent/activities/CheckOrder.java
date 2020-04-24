@@ -180,10 +180,4 @@ public class CheckOrder extends AppCompatActivity implements SwipeRefreshLayout.
         Snackbar.make(mCheckOrderLayout, s, Snackbar.LENGTH_LONG).show();
     }
 
-
-
-
-
-
-
 }

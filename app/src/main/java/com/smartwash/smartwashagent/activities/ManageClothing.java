@@ -67,14 +67,12 @@ public class ManageClothing  extends AppCompatActivity implements SwipeRefreshLa
     LinearLayout mInputLayout;
     @BindView(R.id.contrl_text)
     TextView mContrlText;
-    @BindView(R.id.inputLayoutClothName)
-    TextInputLayout mInputLayoutClothName;
+
     @BindView(R.id.service_editxt)
     EditText mClothEditxt;
     @BindView(R.id.cloth_type)
     Spinner mClothType;
-    @BindView(R.id.inputLayoutPrice)
-    TextInputLayout mInputLayoutPrice;
+
     @BindView(R.id.price_editxt)
     EditText mPriceEditxt;
     @BindView(R.id.add_button)
@@ -139,7 +137,7 @@ public class ManageClothing  extends AppCompatActivity implements SwipeRefreshLa
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         getSupportActionBar().setTitle(title);
-        getSupportActionBar().setElevation(0);
+        getSupportActionBar().setElevation(4);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_keyboard_arrow_left_black_24dp);
 
 
@@ -191,7 +189,7 @@ public class ManageClothing  extends AppCompatActivity implements SwipeRefreshLa
 
 
                     //De-Visualizing the corporate form
-                    mInputLayoutPrice.setVisibility(View.GONE);
+                    mPriceEditxt.setVisibility(View.GONE);
                     mPriceEditxt.setClickable(false);
 
 
@@ -203,7 +201,7 @@ public class ManageClothing  extends AppCompatActivity implements SwipeRefreshLa
 
                     //Visualizing the price
 
-                    mInputLayoutPrice.setVisibility(View.VISIBLE);
+                    mPriceEditxt.setVisibility(View.VISIBLE);
                     mPriceEditxt.setClickable(true);
 
                 }
@@ -215,7 +213,8 @@ public class ManageClothing  extends AppCompatActivity implements SwipeRefreshLa
 
                 mClothType.getItemAtPosition(0);
                 //De-Visualizing the individual form
-                mInputLayoutPrice.setVisibility(View.GONE);
+                mPriceEditxt.setVisibility(View.GONE);
+                price = "0";
 
             }
         });
@@ -236,14 +235,16 @@ public class ManageClothing  extends AppCompatActivity implements SwipeRefreshLa
                         try {
                             APIError apiError = ErrorUtils.parseError(response);
 
-                            showMessage("Fetch Failed: " + apiError.getErrors());
+                            showMessage("Fetch Failed");
                             Log.i("Invalid Fetch", String.valueOf(apiError.getErrors()));
                             mSwipeRefreshLayout.setRefreshing(false);
 
                         } catch (Exception e) {
+
                             Log.i("Fetch Failed", e.getMessage());
                             showMessage("Fetch Failed");
                             mSwipeRefreshLayout.setRefreshing(false);
+
                         }
 
                         return;
@@ -255,7 +256,7 @@ public class ManageClothing  extends AppCompatActivity implements SwipeRefreshLa
                     int count = clothList.size();
 
                     if (count == 0) {
-                        showMessage("Cloth is unavailable for the moment");
+                        showMessage("Empty Clothing");
                         mSwipeRefreshLayout.setVisibility(View.GONE);
                         mNotFoundLayout.setVisibility(View.VISIBLE);
 
@@ -299,7 +300,7 @@ public class ManageClothing  extends AppCompatActivity implements SwipeRefreshLa
 
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.service, menu);
+        getMenuInflater().inflate(R.menu.cloth, menu);
         return true;
     }
 
@@ -307,7 +308,7 @@ public class ManageClothing  extends AppCompatActivity implements SwipeRefreshLa
 
         int itemId = item.getItemId();
 
-        if (itemId == R.id.add_service) {
+        if (itemId == R.id.add_cloth) {
 
             mClothEditxt.setText("");
             mPriceEditxt.setText("");
@@ -356,17 +357,11 @@ public class ManageClothing  extends AppCompatActivity implements SwipeRefreshLa
             boolean isValid = true;
 
             if (mClothEditxt.getText().toString().isEmpty()) {
-                mInputLayoutClothName.setError("Cloth Name is required!");
+                showMessage("Cloth Name is required!");
+
                 isValid = false;
-            } else {
-                mInputLayoutClothName.setErrorEnabled(false);
             }
-            if (mPriceEditxt.getText().toString().isEmpty()) {
-                mInputLayoutPrice.setError("Price is required!");
-                isValid = false;
-            } else {
-                mInputLayoutPrice.setErrorEnabled(false);
-            }
+
 
             clothTypeString = mClothType.getSelectedItem().toString();
             if (clothTypeString.equals("Cloth Type") && mClothType.isClickable()) {
@@ -391,17 +386,11 @@ public class ManageClothing  extends AppCompatActivity implements SwipeRefreshLa
             boolean isValid = true;
 
             if (mClothEditxt.getText().toString().isEmpty()) {
-                mInputLayoutClothName.setError("Cloth Name is required!");
+                showMessage("Cloth Name is required!");
+
                 isValid = false;
-            } else {
-                mInputLayoutClothName.setErrorEnabled(false);
             }
-            if (mPriceEditxt.getText().toString().isEmpty()) {
-                mInputLayoutPrice.setError("Price is required!");
-                isValid = false;
-            } else {
-                mInputLayoutPrice.setErrorEnabled(false);
-            }
+
 
             clothTypeString = mClothType.getSelectedItem().toString();
             if (clothTypeString.equals("Cloth Type") && mClothType.isClickable()) {

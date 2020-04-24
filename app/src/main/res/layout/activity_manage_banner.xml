@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/check_order_layout"
+    android:id="@+id/manage_banner_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -23,6 +23,71 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+
+    >
+
+    <LinearLayout
+        android:id="@+id/input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        >
+
+    <TextView
+        android:id="@+id/contrl_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="Add Banner"
+        android:layout_margin="1dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="@font/nunito_semibold"/>
+
+
+
+        <Button
+            android:id="@+id/upload_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/spinner_bg"
+            android:text="Upload Banner"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/size_eight"
+            android:importantForAutofill="noExcludeDescendants"
+            android:textSize="17sp"
+            android:padding="@dimen/size_six"
+            tools:targetApi="o"
+            />
+
+
+
+
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:visibility="visible"
+        android:clickable="false"
+        android:layout_gravity="center_horizontal"
+        app:indicatorColor="@color/colorAccent"
+        app:indicatorName="BallPulseIndicator"
+        tools:ignore="RtlHardcoded"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary"/>
+
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/not_found_layout"
         android:layout_width="match_parent"
@@ -30,7 +95,6 @@
         android:gravity="center"
         android:layout_gravity="center"
         android:orientation="vertical"
-        android:padding="10dp"
         android:visibility="gone"
         >
 
@@ -45,41 +109,31 @@
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:fontFamily="@font/montserrat_regular"
-            android:text="No order found"
+            android:text="No banner found"
             android:textAlignment="center"
             android:textSize="14sp" />
 
     </LinearLayout>
 
 
-    <!--  <Spinner
-          android:id="@+id/order_spinner"
-          android:layout_width="match_parent"
-          android:layout_height="50dp"
-          android:layout_marginTop="@dimen/size_three"
-          android:background="@drawable/spinner_bg"
-          android:visibility="visible"
-          android:layout_marginBottom="5dp"
-
-          />-->
-
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp"
         android:visibility="visible">
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_order"
+            android:id="@+id/recycler_banner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="LinearLayoutManager" />
+            app:layoutManager="LinearLayoutManager"
+            tools:listitem="@layout/banner_list"/>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
+</LinearLayout>
 
 
 </LinearLayout>

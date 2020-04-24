@@ -92,7 +92,9 @@
                     android:drawableTint="@color/colorPrimary"
                     android:inputType="textEmailAddress"
                     android:fontFamily="@font/nunito_regular"
+                    android:importantForAutofill="no"
                     android:drawableRight="@drawable/ic_email_black_24dp" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -114,6 +116,7 @@
                     android:fontFamily="@font/nunito_regular"
                     android:drawableTint="@color/colorPrimary"
                     android:inputType="textPassword"
+                    android:importantForAutofill="no"
                     android:drawableRight="@drawable/ic_vpn_key_black_24dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -151,6 +154,7 @@
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:textColor="@color/colorAccent"
+                android:visibility="gone"
                 />
 
 
@@ -164,7 +168,7 @@
                 android:fontFamily="@font/nunito_regular"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorDarkerGrey"
                />
 
 

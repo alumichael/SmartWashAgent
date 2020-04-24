@@ -1,6 +1,7 @@
 package com.smartwash.smartwashagent.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,6 +39,7 @@ import com.smartwash.smartwashagent.Model.Errors.APIError;
 import com.smartwash.smartwashagent.Model.Errors.ErrorUtils;
 import com.smartwash.smartwashagent.R;
 import com.smartwash.smartwashagent.activities.NetworkConnection;
+import com.smartwash.smartwashagent.activities.ProfileActivity;
 import com.smartwash.smartwashagent.activities.UserPreferences;
 import com.smartwash.smartwashagent.adapters.CardAdapter;
 import com.smartwash.smartwashagent.retrofit_interface.ApiInterface;
@@ -154,25 +156,20 @@ public class Fragment_Dashboard extends Fragment implements View.OnClickListener
         role=userPreferences.getRole();
         email=userPreferences.getUserEmail();
 
+        mAdminName.setText(username);
+        mRole.setText(role);
+        mEmailTxt.setText(email);
 
         cardList = new ArrayList<>();
-        cardAdapter = new CardAdapter(getContext(), cardList);
 
+        if(email.equals("tayo@gmail.com")){
+            insertSuperAdminElement();
 
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(cardAdapter);
-        
-        //setWallet_balance();
-      //  getServices();
-        insertElement();
+        }else{
+            insertAdminElement();
+        }
 
         setAction();
-
-
-
 
         return view;
     }
@@ -182,13 +179,48 @@ public class Fragment_Dashboard extends Fragment implements View.OnClickListener
 
     }
 
-    private void insertElement() {
+    private void insertAdminElement() {
+//        referencing drawable for the logo
+        int[] icons = new int[]{
+
+                R.drawable.ic_tracking,
+                R.drawable.ic_fashion,
+                R.drawable.ic_filter_b_and_w_black_24dp
+
+        };
+
+
+
+        Card m = new Card("Check Order", icons[0]);
+        cardList.add(m);
+
+
+        m = new Card("Manage Clothing", icons[1]);
+        cardList.add(m);
+
+
+        m = new Card("Manage Banner", icons[2]);
+        cardList.add(m);
+
+
+
+        cardAdapter = new CardAdapter(getContext(), cardList);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(cardAdapter);
+
+    }
+
+    private void insertSuperAdminElement() {
 //        referencing drawable for the logo
         int[] icons = new int[]{
                 R.drawable.ic_household,
                 R.drawable.ic_tracking,
                 R.drawable.ic_fashion,
-                R.drawable.ic_person_add_black_24dp
+                R.drawable.ic_person_add_black_24dp,
+                R.drawable.ic_filter_b_and_w_black_24dp
 
         };
 
@@ -206,9 +238,21 @@ public class Fragment_Dashboard extends Fragment implements View.OnClickListener
         m = new Card("Manage Sub-Admin", icons[3]);
         cardList.add(m);
 
+        m = new Card("Manage Banner", icons[4]);
+        cardList.add(m);
 
+
+
+        cardAdapter = new CardAdapter(getContext(), cardList);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(cardAdapter);
 
     }
+
+
 
     /**
      * Converting dp to pixel
@@ -305,8 +349,7 @@ public class Fragment_Dashboard extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.open_profile:
-
-
+                startActivity(new Intent(getContext(), ProfileActivity.class));
                 break;
 
         }

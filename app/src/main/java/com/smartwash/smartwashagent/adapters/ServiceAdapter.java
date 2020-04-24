@@ -36,6 +36,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
     private Context context;
     private List<CategoryGetData> serviceList;
     String price;
+    String min_price;
     UserPreferences userPreferences;
 
     private MessageAdapterListener listener;
@@ -66,8 +67,10 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
         holder.mServiceName.setText(serviceOption.getCateName());
         //holder.mQuoteBuyImg.setImageResource(serviceOption.getThumbnail());
         //holder.mDsc.setText(serviceOption.get());
-        price= "₦" + serviceOption.getCatePrice();
+        price= "Price: ₦" + serviceOption.getCatePrice();
+        min_price= "Min Order Price: ₦" + serviceOption.getCateMinPrice();
         holder.mServiceAmount.setText(price);
+        holder.mServiceMinAmount.setText(min_price);
 
         holder.mDeleteService.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,14 +86,13 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
 
         holder.setItemClickListener(pos -> {
 
-
             userPreferences.setName(serviceList.get(pos).getCateName());
+            userPreferences.setDescription(serviceList.get(pos).getCateDesc());
             userPreferences.setPrice(serviceList.get(pos).getCatePrice());
             userPreferences.setId(serviceList.get(pos).getCateId());
 
-            listener.onItemClicked(userPreferences.getName(),userPreferences.getPrice(),
+            listener.onItemClicked(userPreferences.getName(),userPreferences.getDescription(),userPreferences.getPrice(),
                     userPreferences.getId());
-
 
 
         });
@@ -102,7 +104,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
 
     public interface MessageAdapterListener {
         void onDeleteClicked(int position);
-        void onItemClicked(String cate_name,String cate_price,String cate_id);
+        void onItemClicked(String cate_name,String cate_desc,String cate_price,String cate_id);
 
     }
 
@@ -131,6 +133,8 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
         TextView mServiceName;
         @BindView(R.id.service_amount)
         TextView mServiceAmount;
+        @BindView(R.id.min_amount)
+        TextView mServiceMinAmount;
         @BindView(R.id.delete_service)
         ImageView mDeleteService;
 
